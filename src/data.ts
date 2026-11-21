@@ -106,7 +106,7 @@ export const proyectos: Proyecto[] = [
     tecnologias: ['JavaScript', 'HTML', 'CSS', 'Gemini', 'Serverless', 'Vercel'],
     imagen: 'proyectos/chat-ia.png',
     // Pega aquí el enlace de tu demo en Vercel, por ejemplo: 'https://proyecto-m3-....vercel.app/'
-    demo: '',
+    demo: 'https://proyecto-m3-andy-ochoa-gntu.vercel.app/chat',
     codigo: 'https://github.com/andy202ochoa/ProyectoM3-AndyOchoa',
   },
   {
