@@ -93,8 +93,9 @@ export const proyectos: Proyecto[] = [
       'Consultas SQL parametrizadas y manejo de códigos HTTP.',
       'Pruebas con Jest y Supertest; documentación con Swagger UI.',
     ],
-    tecnologias: ['Node.js', 'Express', 'PostgreSQL', 'Jest', 'Supertest', 'Swagger'],
+    tecnologias: ['Node.js', 'Express', 'PostgreSQL', 'Jest', 'Supertest', 'Swagger', 'Vercel'],
     imagen: 'proyectos/miniblog.png',
+    demo: 'https://proyecto-m2-andy-ochoa.vercel.app/docs',
     codigo: 'https://github.com/andy202ochoa/ProyectoM2-AndyOchoa',
   },
   {
