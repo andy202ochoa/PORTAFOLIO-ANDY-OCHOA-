@@ -29,6 +29,7 @@ export type Proyecto = {
   imagen: string // captura en public/proyectos/
   demo?: string
   codigo?: string
+  codigoTexto?: string // texto del botón de código (por defecto 'Código')
   codigoExtra?: { texto: string; url: string }
 }
 
@@ -55,15 +56,17 @@ export const proyectos: Proyecto[] = [
     descripcion:
       'Billetera digital para ingresar dinero, transferirlo a otros usuarios y convertirlo entre monedas (USD, COP, ARS, EUR).',
     puntos: [
-      'Desarrollé la lógica del backend y los endpoints para el frontend.',
-      'Implementé transacciones, tasas de cambio y conversión de monedas.',
-      'Integré un agente de IA que da información de la cuenta.',
+      'Desarrollé la API de saldos, monedas, conversiones, transferencias y comisiones.',
+      'Integré un asistente de IA con Google Gemini que responde sobre la cuenta.',
       'Pruebas de lógica y rutas con Vitest; documentación con Swagger.',
+      'Desplegué mi copia en Vercel con base de datos PostgreSQL en Neon.',
     ],
-    tecnologias: ['TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Vitest', 'Swagger'],
+    tecnologias: ['TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Gemini', 'Vitest', 'Swagger', 'Vercel'],
     imagen: 'proyectos/nexapay.png',
-    codigo: 'https://github.com/lNexapay/nexapay-backend',
-    codigoExtra: { texto: 'Frontend', url: 'https://github.com/lNexapay/nexapay-frontend' },
+    demo: 'https://nexapay-frontend-ten.vercel.app/',
+    codigo: 'https://github.com/andy202ochoa/nexapay-backend',
+    codigoTexto: 'Backend',
+    codigoExtra: { texto: 'Frontend', url: 'https://github.com/andy202ochoa/nexapay-frontend' },
   },
   {
     titulo: 'GitHub AI Agent (MCP)',

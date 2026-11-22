@@ -4,7 +4,7 @@ import { ExternalIcon, GitHubIcon } from './Icons'
 
 export default function ProjectCard({ proyecto }: { proyecto: Proyecto }) {
   const [sinImagen, setSinImagen] = useState(false)
-  const { titulo, etiqueta, descripcion, puntos, tecnologias, imagen, demo, codigo, codigoExtra } =
+  const { titulo, etiqueta, descripcion, puntos, tecnologias, imagen, demo, codigo, codigoTexto, codigoExtra } =
     proyecto
 
   return (
@@ -45,7 +45,7 @@ export default function ProjectCard({ proyecto }: { proyecto: Proyecto }) {
           )}
           {codigo && (
             <a className="btn btn-ghost btn-sm" href={codigo} target="_blank" rel="noopener noreferrer">
-              <GitHubIcon size={16} /> Código
+              <GitHubIcon size={16} /> {codigoTexto ?? 'Código'}
             </a>
           )}
           {codigoExtra && (
