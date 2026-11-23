@@ -10,14 +10,14 @@ export const perfil = {
     'Construyo aplicaciones web completas: desde la API y la base de datos hasta la interfaz, con pruebas automatizadas y despliegue en la nube.',
   sobreMi: [
     'Me formé como Full Stack Developer en Henry (800 horas), donde desarrollé proyectos con React, TypeScript, Node.js, Express, PostgreSQL y Firebase, trabajando con metodologías ágiles y en equipo.',
-    'Me interesa especialmente el backend y la integración de IA: construí un servidor MCP que conecta un agente de IA con la API de GitHub y un agente que consulta datos de una billetera digital.',
+    'Me interesa especialmente el backend y la integración de IA: construí un servidor MCP que conecta un agente de IA con la API de GitHub y un asistente con Gemini que responde sobre los datos de una billetera digital.',
     'Busco mi primera oportunidad como desarrollador para seguir aprendiendo y aportar en un equipo real.',
   ],
   email: 'andy202ochoa@gmail.com',
   github: 'https://github.com/andy202ochoa',
   linkedin: 'https://www.linkedin.com/in/andy-ochoa-7661a6445/',
   // Si subes un PDF de tu CV SIN número de teléfono a public/cv.pdf, pon aquí 'cv.pdf'
-  cv: '',
+  cv: 'cv.pdf',
 }
 
 export type Proyecto = {
@@ -35,31 +35,15 @@ export type Proyecto = {
 
 export const proyectos: Proyecto[] = [
   {
-    titulo: 'TaskFlow',
-    etiqueta: 'Full Stack · React',
-    descripcion:
-      'App de tareas y notas con autenticación y datos aislados por usuario en la nube.',
-    puntos: [
-      'Login con correo (con verificación) y con Google mediante Firebase Auth.',
-      'Firestore con reglas de seguridad: cada usuario solo ve sus datos.',
-      'Correo de confirmación con AWS SES a través de una Cloud Function.',
-      'Pruebas de hooks y componentes con Vitest y React Testing Library.',
-    ],
-    tecnologias: ['React', 'TypeScript', 'Vite', 'Firebase', 'AWS SES', 'Vitest', 'Vercel'],
-    imagen: 'proyectos/taskflow.png',
-    demo: 'https://proyecto-m4-andy-ochoa.vercel.app/',
-    codigo: 'https://github.com/andy202ochoa/ProyectoM4-AndyOchoa',
-  },
-  {
     titulo: 'NexaPay',
     etiqueta: 'Backend · Equipo de 4',
     descripcion:
-      'Billetera digital para ingresar dinero, transferirlo a otros usuarios y convertirlo entre monedas (USD, COP, ARS, EUR).',
+      'Billetera digital multimoneda (USD, EUR, COP, ARS) para ingresar dinero, convertirlo y transferirlo entre usuarios, con un asistente de IA integrado.',
     puntos: [
-      'Desarrollé la API de saldos, monedas, conversiones, transferencias y comisiones.',
-      'Integré un asistente de IA con Google Gemini que responde sobre la cuenta.',
-      'Pruebas de lógica y rutas con Vitest; documentación con Swagger.',
-      'Desplegué mi copia en Vercel con base de datos PostgreSQL en Neon.',
+      'Construí la API de saldos, conversiones, transferencias (por email o número de cuenta) y comisiones por par de monedas.',
+      'Integré un asistente con Google Gemini que responde preguntas sobre la cuenta en modo solo lectura y con límite de consultas.',
+      'Pruebas con Vitest y documentación con Swagger; trabajo en equipo con ramas, Pull Requests revisados y CI.',
+      'Desplegué mi copia de forma independiente en Vercel con PostgreSQL en Neon.',
     ],
     tecnologias: ['TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Gemini', 'Vitest', 'Swagger', 'Vercel'],
     imagen: 'proyectos/nexapay.png',
@@ -69,14 +53,30 @@ export const proyectos: Proyecto[] = [
     codigoExtra: { texto: 'Frontend', url: 'https://github.com/andy202ochoa/nexapay-frontend' },
   },
   {
+    titulo: 'TaskFlow',
+    etiqueta: 'Full Stack · React',
+    descripcion:
+      'App de tareas y notas donde cada usuario tiene sus datos privados en la nube y puede recibir por correo un resumen de sus tareas.',
+    puntos: [
+      'Registro con verificación de correo y login con Google mediante Firebase Auth.',
+      'Firestore con reglas de seguridad para que cada usuario solo acceda a sus datos.',
+      'Envío del resumen de tareas con AWS SES desde una función serverless en Vercel que valida el token del usuario.',
+      'Mensajes de error claros en español y pruebas de hooks, servicios y componentes con Vitest.',
+    ],
+    tecnologias: ['React', 'TypeScript', 'Vite', 'Firebase', 'AWS SES', 'Vitest', 'Vercel'],
+    imagen: 'proyectos/taskflow.png',
+    demo: 'https://proyecto-m4-andy-ochoa.vercel.app/',
+    codigo: 'https://github.com/andy202ochoa/ProyectoM4-AndyOchoa',
+  },
+  {
     titulo: 'GitHub AI Agent (MCP)',
     etiqueta: 'IA · Backend',
     descripcion:
-      'Servidor MCP que permite a un agente de IA crear repositorios, issues y commits en GitHub, y listar repositorios e issues.',
+      'Servidor MCP que le permite a un agente de IA trabajar con GitHub: crear repositorios, issues y commits, y listar repositorios e issues.',
     puntos: [
-      '5 tools con formato y descripción para que la IA las ejecute.',
-      'Validación de entradas con Zod; manejo de errores, reintentos y logging.',
-      'Integración con la API de GitHub usando Octokit.',
+      '5 tools con descripciones pensadas para que la IA sepa cuándo y cómo usarlas.',
+      'Validación de entradas con Zod, reintentos ante fallos de la API y logging.',
+      'Integración con la API de GitHub mediante Octokit, probada con MCP Inspector y un agente real.',
       '58 pruebas automatizadas con Vitest.',
     ],
     tecnologias: ['TypeScript', 'Node.js', 'MCP', 'Zod', 'Octokit', 'Vitest'],
@@ -86,12 +86,13 @@ export const proyectos: Proyecto[] = [
   {
     titulo: 'MiniBlog API',
     etiqueta: 'API REST',
-    descripcion: 'API REST para un blog con gestión de autores y publicaciones.',
+    descripcion:
+      'API REST para un blog con autores y publicaciones, documentada con Swagger y desplegada para probarla desde el navegador.',
     puntos: [
-      'CRUD completo de autores y posts, incluida la consulta de posts por autor.',
-      'Arquitectura por capas: rutas → controladores → servicios.',
-      'Consultas SQL parametrizadas y manejo de códigos HTTP.',
-      'Pruebas con Jest y Supertest; documentación con Swagger UI.',
+      'CRUD de autores y posts, incluida la consulta de los posts de un autor con sus datos.',
+      'Arquitectura por capas (rutas, controladores, servicios) con SQL parametrizado e índices.',
+      'Validaciones con respuestas 400/404 claras: ids inválidos, campos vacíos, email repetido o JSON mal formado.',
+      '19 pruebas de endpoints con Jest y Supertest; desplegada en Vercel con PostgreSQL en Neon.',
     ],
     tecnologias: ['Node.js', 'Express', 'PostgreSQL', 'Jest', 'Supertest', 'Swagger', 'Vercel'],
     imagen: 'proyectos/miniblog.png',
@@ -101,15 +102,15 @@ export const proyectos: Proyecto[] = [
   {
     titulo: 'Chat con IA',
     etiqueta: 'SPA · IA',
-    descripcion: 'SPA para conversar con tu personaje favorito usando Google Gemini.',
+    descripcion:
+      'SPA para conversar con personajes que responden con su propia personalidad usando Google Gemini.',
     puntos: [
-      'Navegación por rutas internas sin recargar la página, en JavaScript puro.',
-      'Backend serverless en Vercel que protege la API key.',
-      'Pruebas del backend y del enrutador.',
+      'Navegación entre vistas sin recargar la página con un enrutador propio en JavaScript puro.',
+      'Función serverless en Vercel que llama a Gemini y mantiene la API key fuera del navegador.',
+      'Diseño responsive y pruebas del backend y del enrutador.',
     ],
     tecnologias: ['JavaScript', 'HTML', 'CSS', 'Gemini', 'Serverless', 'Vercel'],
     imagen: 'proyectos/chat-ia.png',
-    // Pega aquí el enlace de tu demo en Vercel, por ejemplo: 'https://proyecto-m3-....vercel.app/'
     demo: 'https://proyecto-m3-andy-ochoa-gntu.vercel.app/chat',
     codigo: 'https://github.com/andy202ochoa/ProyectoM3-AndyOchoa',
   },
@@ -117,9 +118,9 @@ export const proyectos: Proyecto[] = [
     titulo: 'Generador de Paletas',
     etiqueta: 'Frontend',
     descripcion:
-      'Genera paletas de 6 a 9 colores en formato HSL o HEX y copia los códigos con un clic.',
+      'Genera paletas de 6 a 9 colores en formato HSL o HEX y copia cualquier código con un clic.',
     puntos: [
-      'Manipulación del DOM y eventos en JavaScript puro.',
+      'Manipulación del DOM y manejo de eventos en JavaScript puro.',
       'Diseño responsive con Flexbox, Grid y media queries.',
     ],
     tecnologias: ['HTML', 'CSS', 'JavaScript'],
